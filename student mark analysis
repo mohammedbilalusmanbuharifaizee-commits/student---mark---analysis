@@ -1,0 +1,62 @@
+
+# Student Mark Analysis Program
+# Calculates total, average, and grade for 3 subjects
+
+def calculate_grade(average):
+    if average >= 90:
+        return "A+"
+    elif average >= 80:
+        return "A"
+    elif average >= 70:
+        return "B"
+    elif average >= 60:
+        return "C"
+    elif average >= 50:
+        return "D"
+    else:
+        return "F"
+
+
+def main():
+    print("===== STUDENT MARK ANALYSIS =====")
+
+    name = input("Enter student name: ")
+
+    subjects = ["Python", "Mathematics", "English"]
+    marks = []
+
+    for subject in subjects:
+        while True:
+            try:
+                mark = float(input(f"Enter marks for {subject} (0-100): "))
+
+                if 0 <= mark <= 100:
+                    marks.append(mark)
+                    break
+                else:
+                    print("Please enter marks between 0 and 100.")
+
+            except ValueError:
+                print("Invalid input. Enter a number.")
+
+    total = sum(marks)
+    average = total / len(subjects)
+    grade = calculate_grade(average)
+
+    print("\n===== RESULT =====")
+    print("Student Name:", name)
+    print("Python Marks:", marks[0])
+    print("Mathematics Marks:", marks[1])
+    print("English Marks:", marks[2])
+    print("Total Marks:", total, "/ 300")
+    print(f"Average: {average:.2f}%")
+    print("Grade:", grade)
+
+    if grade == "F":
+        print("Result: Needs Improvement")
+    else:
+        print("Result: Pass")
+
+
+if __name__ == "__main__":
+    main()
